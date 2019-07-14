@@ -1,0 +1,382 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Please note that whilst this template provides a 
+% preview of the typeset manuscript for submission, it 
+% will not necessarily be the final publication layout.
+%
+% letterpaper/a4paper: US/UK paper size toggle
+% num-refs/alpha-refs: numeric/author-year citation and bibliography toggle
+
+%\documentclass[letterpaper]{ehi-journals}
+\documentclass[a4paper,num-refs]{ehi-journals}
+
+%%% Journal toggle; only specific options recognised.
+%%% (Only "neurobehav" is implemented now.)
+\journal{neurobehav}
+
+%%% Watermark toggles
+%%% Accepts "draft" or "retracted". Setting any other value will remove the watermark.
+\watermark{draft}
+
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{academicons}
+\definecolor{orcidlogocol}{HTML}{A6CE39}
+\newcommand{\orcid}[1]{\href{https://orcid.org/#1}{\textcolor[HTML]{A6CE39}{\aiOrcid}}}
+
+%%% Flushend: You can add this package to automatically balance the final page, but if things go awry (e.g. section contents appearing out-of-order or entire blocks or paragraphs are coloured), remove it!
+% \usepackage{flushend}
+
+\title{This is the full title of your paper}
+
+%%% Use the \authfn to add symbols for additional footnotes, if any. 1 is reserved for correspondence emails; then continuing with 2 etc for contributions.
+\author[1,\authfn{2}]{Author One\orcid{0000-0000-0000-0000}}
+\author[1,2,\authfn{2}]{Author Two}
+\author[1,2]{Author Three}
+\author[1,\authfn{1}]{Corresponding Author}
+
+\affil[1]{Affiliation 1}
+\affil[2]{Affiliation 2}
+
+%%% Author Notes
+\authnote{\authfn{1}CorrespondingAuthor@email.com}
+\authnote{\authfn{2}Authors contributed equally}
+
+%%% Paper category
+\papercat{Research Article}
+
+%%% "Short" author for running page header
+\runningauthor{Last Name et al.}
+
+%%% Should only be set by an editor
+\jvolume{1}
+\jnumber{1}
+\jarticlenum{e99}
+\jyear{2019}
+\jdoi{10.35430/nab.YYYY.articleid}
+
+%%% Select your CC License and permissions contact
+\newtoggle{NC}
+\togglefalse{NC} %%% Uses the default CC BY license which allows unrestricted reuse of the article, provided appropriate acknowledgement is provided. This options is recommended and ensures compliance with Plan S and other open access mandates.
+%%% \toggletrue{NC} %%% Uses the CC BY-NC licenses which restricts commercial reuse of the article. This allows authors to take action against commercial use violations
+
+\begin{document}
+
+\begin{frontmatter}
+\maketitle
+\begin{abstract}
+This is where the abstract should be. It should be limited to 250 words, unstructured, and should not have any citations in it. Do note that this LaTeX file needs to be compiled using LuaLaTeX for ORCID links to work. 
+\end{abstract}
+
+\begin{keywords}
+Keywords; Seperated; By; Semicolons
+\end{keywords}
+\end{frontmatter}
+
+%%% Key points will be printed at top of second page
+\begin{keypoints*}
+\begin{itemize}
+\item Keypoint 1
+\item Keypoint 2
+\item Keypoint 3
+\end{itemize}
+\end{keypoints*}
+
+\section{Introduction to this Template}
+
+\begin{epigraph}{Epigraph source name}
+This is the epigraph text, should you like to add one. It is almost never used. 
+\end{epigraph}
+
+This is the \LaTeX{} template for Neuroanatomy and Behaviour articles, based on the oup-contemporary class developed by Oxford University Press and Overleaf. 
+
+There are important commands in the preamble that you will need to modify for your own manuscript. If you are using this template on Overleaf, please switch the editor to Source code mode to view them; or if you prefer to stay in the Rich Text view, click on the title in the Rich Text view to display the preamble code.
+
+Check the the \verb|\journal{...}| command in the preamble so that the correct journal name, logo and colours are loaded automatically. \textbf{Neuroanatomy and Behaviour is the only journal at this time}.
+
+You shouldn't alter \verb|\jname|, \verb|\jlogo| or \verb|jcolour|.
+
+Specify your manuscript's category with the \verb|\papercat{...}| command in the preamble. For example, "Research Article" or "Review".
+
+See the sample code in the preamble for a sample of how author and affiliation information can be specified.
+
+Use later sections starting with `Background' on page~\pageref{sec:background} to write your manuscript. The remainder of this current section will provide some sample \LaTeX{} code for various elements you may want to include in your manuscript.
+
+\subsection{Sectional Headings}
+You can use \verb|\section{...}|, \verb|\subsection{...}| commands to add more sections and subsections to your manuscript. Further sectional levels are provided by \verb|\subsubsection|, \verb|\paragraph| and \verb|\subparagraph|.
+
+\subsection{Citations and References}
+\emph{Neuroanatomy and Behaviour} uses the \emph{PLOS} referencing style..
+This is a citation: \cite{Fan:2004} and here are two more: \cite{Cox:1972,Hear:Holm:Step:quan:2006}.
+
+\begin{quote}
+This is a quote. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+\end{quote}
+
+\begin{itemize}
+\item This is a bullet list.
+\item Another point.
+\item A third point.
+\end{itemize}
+
+This\footnote{This is the footnote text. This is the footnote text. This is the footnote text. This is the footnote text. This is the footnote text.} is a footnote. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+\begin{enumerate}[label=\arabic*)]
+\item This is a numbered list.
+\item Another point.
+\item A third point.
+\end{enumerate}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+
+\subsubsection{This is a 3rd level heading}
+
+Use \verb|\subsubsection| to get a 3rd level heading.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+
+
+\paragraph{This is a 4th level heading}
+
+Use \verb|\paragraph| to get a 4th level heading.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+
+\subparagraph{This is a 5th level heading}
+
+Use \verb|\subparagraph| to get a 5th level heading.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+
+\subsection{Figures and Tables}
+Figures and tables can be added with the usual \verb|figure| and \verb|table| environments, e.g.~Figure \ref{fig:example} and Table \ref{tab:example}. Use \verb|figure*| and \verb|table*| if you need a two-column wide figure or table, as in Figure \ref{fig:example:wide} and Table \ref{tab:example:wide}. 
+
+If you have a very wide table or figure, you can use \texttt{sidewaystable} or \texttt{sidewaysfigure}, as in Table \ref{tab:example:sideways}: this will be rotated sideways and occupy a \emph{single column} on its own.
+
+If your table or figure is both wide and tall (so it wouldn't fit well in a single column with \texttt{sidewaystable} or \texttt{figure}), 
+you can use \verb|table| or \verb|figure| inside a \verb|landscape| environment for a full-page landscaped alternative. A page break will be inserted \emph{immediately before and after} the \verb|landscape| environment (Table \ref{tab:example:landscape}), so you'll need to carefully position it in a suitable location in your manuscript.
+
+\begin{figure}[bt!] %% preferably at bottom or top of column
+\centering
+\includegraphics[width=\linewidth]{example-image}
+\caption{An example figure}\label{fig:example}
+\end{figure}
+
+\begin{table}[bt!]
+\caption{An example table.}\label{tab:example}
+\begin{tabular}{l r l}
+\toprule
+Item & Quantity & Notes\\
+\midrule
+Widgets & 42 & Over-supplied\textsuperscript{*} \\
+Gadgets & 13 & Under-supplied \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item This is a table note.
+\item \textsuperscript{*}Another note.
+\end{tablenotes}
+\end{table}
+
+
+\subsection{Some Mathematics Sample}
+
+Let $X_1, X_2, \ldots, X_n$ be a sequence of independent and identically distributed random variables with $\text{E}[X_i] = \mu$ and $\text{Var}[X_i] = \sigma^2 < \infty$, and let
+%
+\begin{equation}
+S_n = \frac{X_1 + X_2 + \cdots + X_n}{n}
+      = \frac{1}{n}\sum_{i}^{n} X_i
+\end{equation}
+%
+denote their mean. Then as $n$ approaches infinity, the random variables $\sqrt{n}(S_n - \mu)$ converge in distribution to a normal $\mathcal{N}(0, \sigma^2)$.
+
+
+\section{Introduction}
+\label{sec:introduction}
+
+The introduction section should provide background for your study and be written in a way that is accessible to researchers without specialist knowledge in that area and must clearly state---and, if helpful, illustrate---the background to the research and its aims. The section should end with a brief statement of what is being reported in the article.
+
+\section{Methods}
+
+The methods section should include the design of the study, the type of materials involved, a clear description of all comparisons, and the type of analysis used, to enable replication of the work. Ease of reproducibility is one of the key criteria on which reviewers will be asked to comment and the highest review scores for methodology are only available to manuscripts that engage in reproducibility-enhancing practices.
+
+\subsection{Ethical Approval (if applicable)}
+Manuscripts reporting studies involving human participants, human data or human tissue must:
+
+\begin{itemize}
+\item include a statement on ethics approval and consent (even where the need for approval was waived)
+\item include the name of the ethics committee that approved the study and the committee's reference number if appropriate
+\end{itemize}
+
+Studies involving animals must include a statement on ethics approval and have been treated in a humane manner in line with the \href{http://www.nc3rs.org.uk/arrive-guidelines}{ARRIVE guidelines}.
+
+If your manuscript does not report on or involve the use of any animal or human data or tissue, this section is not applicable to your submission.
+
+\section{Data and Material Availability}
+
+\textit{Neuroanatomy and Behaviour} requires authors to deposit the data set(s) supporting the results reported in submitted manuscripts in a publicly-accessible data repository such as \href{https://osf.io/}{Open Science Framework}. This section should be included when supporting data are available and must include the name of the repository and the permanent identifier or accession number and persistent hyperlinks for the data sets (if appropriate). The following format is recommended:
+
+``The data set(s) supporting the results of this article is(are) available in the [repository name] repository, [cite unique persistent identifier].''
+
+The dataset should be cited and included in the reference list. It is strongly recommended that an open access license is applied to your data, such as CC BY for datasets or MIT or GPL for computer code.
+
+\section{Results}
+
+Describe your results, providing full statistical results in APA format and figures and tables as appropriate.
+
+\begin{figure*}%[b!]  %% Add a [b!] if you prefer the wide image to be at the bottm of the page
+\centering
+\includegraphics[width=.7\textwidth]{example-image}
+\caption{An example wide figure. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+}\label{fig:example:wide}
+\end{figure*}
+
+This section should provide details of all of the experiments and analyses that are required to support the conclusions of the paper. The authors should make clear the goal of each analysis and state the basic findings.
+
+\begin{table*}[bt!]
+\caption{Automobile land speed records (GR 5-10)}\label{tab:example:wide}
+% Use "S" column identifier (from siunitx) to align on decimal point.
+% Use "L", "R" or "C" column identifier for auto-wrapping columns with tabularx.
+\begin{tabularx}{\linewidth}{S l l l r L}
+\toprule
+{Speed (mph)} & {Driver} & {Car} & {Engine} & {Date} & {Extra comments}\\
+\midrule
+407.447     & Craig Breedlove & Spirit of America          & GE J47    & 8/5/63  & (Just to demo a full-width table with auto-wrapping long lines) \\
+413.199     & Tom Green       & Wingfoot Express           & WE J46    & 10/2/64  \\
+434.22      & Art Arfons      & Green Monster              & GE J79    & 10/5/64  \\
+468.719     & Craig Breedlove & Spirit of America          & GE J79    & 10/13/64 \\
+526.277     & Craig Breedlove & Spirit of America          & GE J79    & 10/15/65 \\
+536.712     & Art Arfons      & Green Monster              & GE J79    & 10/27/65 \\
+555.127     & Craig Breedlove & Spirit of America, Sonic 1 & GE J79    & 11/2/65  \\
+576.553     & Art Arfons      & Green Monster              & GE J79    & 11/7/65  \\
+600.601     & Craig Breedlove & Spirit of America, Sonic 1 & GE J79    & 11/15/65 \\
+622.407     & Gary Gabelich   & Blue Flame                 & Rocket    & 10/23/70 \\
+633.468     & Richard Noble   & Thrust 2                   & RR RG 146 & 10/4/83  \\
+763.035     & Andy Green      & Thrust SSC                 & RR Spey   & 10/15/97\\
+\bottomrule
+\end{tabularx}
+
+\begin{tablenotes}
+\item Source is from this website: \url{https://www.sedl.org/afterschool/toolkits/science/pdf/ast_sci_data_tables_sample.pdf}
+\end{tablenotes}
+\end{table*}
+
+
+\section{Discussion}
+
+The discussion should spell out the major conclusions and interpretations of the work, including some explanation on the importance and relevance of the dataset and analysis. It should not be restatement of the analyses done and their basic conclusions. The discussion section can end with a concluding paragraph that clearly states the main conclusions of the research along with directions for future work. Summary illustrations can be included.
+
+\begin{sidewaystable}
+\caption{Automobile land speed records (GR 5-10). This is the same table as before, but rotated sideways.}
+\label{tab:example:sideways}
+% Use "S" column identifier (from siunitx) to align on decimal point.
+% Use "L", "R" or "C" column identifier for auto-wrapping columns with tabularx.
+\begin{tabularx}{\linewidth}{S l l l r L}
+\toprule
+{Speed (mph)} & {Driver} & {Car} & {Engine} & {Date} & {Extra comments}\\
+\midrule
+407.447     & Craig Breedlove & Spirit of America          & GE J47    & 8/5/63  & (Just to demo a full-width table with auto-wrapping long lines) \\
+413.199     & Tom Green       & Wingfoot Express           & WE J46    & 10/2/64  \\
+434.22      & Art Arfons      & Green Monster              & GE J79    & 10/5/64  \\
+468.719     & Craig Breedlove & Spirit of America          & GE J79    & 10/13/64 \\
+526.277     & Craig Breedlove & Spirit of America          & GE J79    & 10/15/65 \\
+536.712     & Art Arfons      & Green Monster              & GE J79    & 10/27/65 \\
+555.127     & Craig Breedlove & Spirit of America, Sonic 1 & GE J79    & 11/2/65  \\
+576.553     & Art Arfons      & Green Monster              & GE J79    & 11/7/65  \\
+600.601     & Craig Breedlove & Spirit of America, Sonic 1 & GE J79    & 11/15/65 \\
+622.407     & Gary Gabelich   & Blue Flame                 & Rocket    & 10/23/70 \\
+633.468     & Richard Noble   & Thrust 2                   & RR RG 146 & 10/4/83  \\
+763.035     & Andy Green      & Thrust SSC                 & RR Spey   & 10/15/97\\
+\bottomrule
+\end{tabularx}
+
+\begin{tablenotes}
+\item Source is from this website: \url{https://www.sedl.org/afterschool/toolkits/science/pdf/ast_sci_data_tables_sample.pdf}
+\end{tablenotes}
+\end{sidewaystable}
+
+
+\subsection{Limitations}
+
+Optional subheadings within the discussion can help to structure the discussion around key points, limitations or potential implications.
+
+\subsection{Conclusion}
+
+The authors will likely have some key conclusions and these can be included in a subsection if the authors desire.
+
+\section{Declarations}
+
+\subsection{Author's Contributions}
+
+The individual contributions of authors to the manuscript should be specified in this section. In accordance with our \href{https://about.epistemehealth.com/policy/}{editorial policies}, we require authors to follow disciplinary norms, taking into account guidance from the \href{http://www.icmje.org/}{International Committee of Medical Journal Editors} and \href{https://publicationethics.org/resources/discussion-documents/what-constitutes-authorship-english-june-2014}{Committee on Publication Ethics}. We would recommend you follow some kind of standardised taxonomy like the \href{http://docs.casrai.org/CRediT}{CASRAI CRediT} (Contributor Roles Taxonomy). We generally require the corresponding author to act as a guarantor of the article's integrity.
+
+\section{Acknowledgements}
+
+Please acknowledge anyone who contributed towards the article who does not meet the criteria for authorship including anyone who provided professional writing services or materials.
+
+Please acknowledge any funding in this section.
+
+\subsection{Consent for publication}
+
+If your manuscript contains any individual person's data in any form, consent to publish must be obtained from that person, or in the case of children, their parent or legal guardian. All presentations of case reports must have consent to publish. You can use your institutional consent form. You should not send the form to us on submission, but we may request to see a copy at any stage (including after publication). Please also confirm you have followed national guidelines on data collection and release in the place the research was carried out, for example confirming you have Ministry of Science and Technology (MOST) approval in China.
+
+If your manuscript does not contain any individual person's data, please delete this section.
+
+\subsection{Conflict of Interest Declaration}
+
+All financial and non-financial interests that are or could be perceived as a conflict of interest must be declared in this section. Where an author gives no competing interests, the listing will read `The author(s) declare that they have no competing interests'. If you are unsure whether you or any of your co-authors have a competing interest please contact the editorial office.
+
+\section{Editorial Notes}
+
+For the benefit of readers, the manuscript's reviewers are asked to write a short summary of their review to outline the key strengths and weaknesses of the paper.
+
+\subsection{Reviewer 1}
+
+This paper was very good. I enjoyed reading it a lot and hope readers find it helpful.
+
+\subsection{Reviewer 2}
+
+This paper has some serious weaknesses. It had some interesting points, which readers may find interesting, but they should be aware of several important caveats. These caveats include...
+
+%% Specify your .bib file name here, without the extension
+\bibliography{paper-refs}
+
+\section{Copyright and License}
+
+\iftoggle{NC}{
+Copyright © \the\year. The Author(s). Except where otherwise noted, the content of this article is licensed under a \href{https://creativecommons.org/licenses/by-nc/4.0/}{Creative Commons Attribution-NonCommercial 4.0 International License}. In addition to this license, reuse of a reasonable portion of the work for \emph{fair dealing} purposes under Australian copyright law, such as medical research, education, scholarship, or not-for-profit or charitable purposes, is also permitted. For additional permissions, please contact the publisher.
+}{
+Copyright © \the\year.The Author(s). Except where otherwise noted, the content of this article is licensed under a \href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International License}. You are free to reuse or adapt this article for any purpose, provided appropriate acknowledgment is provided. For additional permissions, please contact the corresponding author.
+}
+
+
+\begin{landscape}
+\begin{table}
+\caption{Automobile land speed records (GR 5-10). This is again the same table as before, but on a landscaped page. \textbf{Note that a hard page break is inserted immediately before and after \texttt{landscape}}, so you'll need to carefully position such an environment at a suitable location in your manuscript!}
+\label{tab:example:landscape}
+\begin{tabularx}{\linewidth}{S l l l r L}
+\toprule
+{Speed (mph)} & {Driver} & {Car} & {Engine} & {Date} & {Extra comments}\\
+\midrule
+407.447     & Craig Breedlove & Spirit of America          & GE J47    & 8/5/63  & (Just to demo a full-width table with auto-wrapping long lines) \\
+413.199     & Tom Green       & Wingfoot Express           & WE J46    & 10/2/64  \\
+434.22      & Art Arfons      & Green Monster              & GE J79    & 10/5/64  \\
+468.719     & Craig Breedlove & Spirit of America          & GE J79    & 10/13/64 \\
+526.277     & Craig Breedlove & Spirit of America          & GE J79    & 10/15/65 \\
+536.712     & Art Arfons      & Green Monster              & GE J79    & 10/27/65 \\
+555.127     & Craig Breedlove & Spirit of America, Sonic 1 & GE J79    & 11/2/65  \\
+576.553     & Art Arfons      & Green Monster              & GE J79    & 11/7/65  \\
+600.601     & Craig Breedlove & Spirit of America, Sonic 1 & GE J79    & 11/15/65 \\
+622.407     & Gary Gabelich   & Blue Flame                 & Rocket    & 10/23/70 \\
+633.468     & Richard Noble   & Thrust 2                   & RR RG 146 & 10/4/83  \\
+763.035     & Andy Green      & Thrust SSC                 & RR Spey   & 10/15/97\\
+\bottomrule
+\end{tabularx}
+
+\begin{tablenotes}
+\item Source is from this website: \url{https://www.sedl.org/afterschool/toolkits/science/pdf/ast_sci_data_tables_sample.pdf}
+\end{tablenotes}
+\end{table}
+\end{landscape}
+
+
+
+\end{document}
