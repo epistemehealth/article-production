@@ -20,8 +20,12 @@
 \usepackage{graphicx}
 \usepackage{siunitx}
 \usepackage{academicons}
+\usepackage{hyperxmp}
 \definecolor{orcidlogocol}{HTML}{A6CE39}
 \newcommand{\orcid}[1]{\href{https://orcid.org/#1}{\textcolor[HTML]{A6CE39}{\aiOrcid}}}
+
+%%% PDF metadata
+%%% This generates the metadata for the PDF
 
 %%% Flushend: You can add this package to automatically balance the final page, but if things go awry (e.g. section contents appearing out-of-order or entire blocks or paragraphs are coloured), remove it!
 % \usepackage{flushend}
@@ -33,6 +37,7 @@
 \author[1,2,\authfn{2}]{Author Two}
 \author[1,2]{Author Three}
 \author[1,\authfn{1}]{Corresponding Author}
+\newcommand{\authorlist}{Author One, Author Two, Author Three, Corresponding Author}
 
 \affil[1]{Affiliation 1}
 \affil[2]{Affiliation 2}
@@ -47,6 +52,14 @@
 %%% "Short" author for running page header
 \runningauthor{Last Name et al.}
 
+%%% Keywords list
+\newcommand{\kwdone}{Keyword One}
+\newcommand{\kwdtwo}{Keyword Two}
+\newcommand{\kwdthree}{Keyword Three}
+\newcommand{\kwdfour}{Keyword Four}
+\newcommand{\kwdfive}{Keyword Five}
+\newcommand{\kwdsix}{Keyword Six}
+
 %%% Should only be set by an editor
 \jvolume{1}
 \jnumber{1}
@@ -57,18 +70,18 @@
 %%% Select your CC License and permissions contact
 \newtoggle{NC}
 \togglefalse{NC} %%% Uses the default CC BY license which allows unrestricted reuse of the article, provided appropriate acknowledgement is provided. This options is recommended and ensures compliance with Plan S and other open access mandates.
-%%% \toggletrue{NC} %%% Uses the CC BY-NC licenses which restricts commercial reuse of the article. This allows authors to take action against commercial use violations
+%%% \toggletrue{NC} %%% Uses the CC BY-NC licenses which restricts commercial reuse of the article. This allows authors to take action against commercial use violations.
 
 \begin{document}
 
 \begin{frontmatter}
 \maketitle
 \begin{abstract}
-This is where the abstract should be. It should be limited to 250 words, unstructured, and should not have any citations in it. Do note that this LaTeX file needs to be compiled using LuaLaTeX for ORCID links to work. 
+This is where the abstract should be. It should be limited to 250 words, unstructured, and should not have any citations in it. Do note that this LaTeX file needs to be compiled using LuaLaTeX for ORCID links to work.
 \end{abstract}
 
 \begin{keywords}
-Keywords; Seperated; By; Semicolons
+\kwdone; \kwdtwo; \kwdthree; \kwdfour; \kwdfive; \kwdsix
 \end{keywords}
 \end{frontmatter}
 
@@ -342,9 +355,34 @@ This paper has some serious weaknesses. It had some interesting points, which re
 \section{Copyright and License}
 
 \iftoggle{NC}{
-Copyright © \the\year. The Author(s). Except where otherwise noted, the content of this article is licensed under a \href{https://creativecommons.org/licenses/by-nc/4.0/}{Creative Commons Attribution-NonCommercial 4.0 International License}. In addition to this license, reuse of a reasonable portion of the work for \emph{fair dealing} purposes under Australian copyright law, such as medical research, education, scholarship, or not-for-profit or charitable purposes, is also permitted. For additional permissions, please contact the publisher.
+Copyright © \the\year. The Author(s). Except where otherwise noted, the content of this article is licensed under a \href{https://creativecommons.org/licenses/by-nc/4.0/}{Creative Commons Attribution-NonCommercial 4.0 International License}. In addition to this license, reuse of a reasonable portion of the work for \emph{fair dealing} purposes under Australian copyright law, such as medical research, education, scholarship, or not-for-profit or charitable purposes, is also permitted. For additional permissions, please contact the corresponding author.
+
+	\hypersetup{
+	    pdfauthor={\authorlist},
+	    pdfsubject={Neuroscience and Psychology},
+	    pdfkeywords={\kwdone, \kwdtwo, \kwdthree, \kwdfour, \kwdfive, \kwdsix},
+	    pdfpublication={Neuroanatomy and Behaviour},
+	    pdfpublisher={Episteme Health Inc.},
+	    pdfpubtype={journal},
+	    pdfeissn={2652-1768},
+	    pdfcopyright={Except where otherwise noted, the content of this article is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License. In addition to this license, reuse of a reasonable portion of the work for fair dealing purposes under Australian copyright law, such as medical research, education, scholarship, or not-for-profit or charitable purposes, is also permitted. For additional permissions, please contact the corresponding author.},
+	    pdflicenseurl={https://creativecommons.org/licenses/by-nc/4.0/},
+	}
+
 }{
 Copyright © \the\year.The Author(s). Except where otherwise noted, the content of this article is licensed under a \href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International License}. You are free to reuse or adapt this article for any purpose, provided appropriate acknowledgment is provided. For additional permissions, please contact the corresponding author.
+
+	\hypersetup{
+	    pdfauthor={\authorlist},
+	    pdfsubject={Neuroscience and Psychology},
+	    pdfkeywords={\kwdone, \kwdtwo, \kwdthree, \kwdfour, \kwdfive, \kwdsix},
+	    pdfpublication={Neuroanatomy and Behaviour},
+	    pdfpublisher={Episteme Health Inc.},
+	    pdfpubtype={journal},
+	    pdfeissn={2652-1768},
+	    pdfcopyright={Except where otherwise noted, the content of this article is licensed under Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.},
+	    pdflicenseurl={https://creativecommons.org/licenses/by/4.0/},
+	}
 }
 
 
