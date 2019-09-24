@@ -81,3 +81,5 @@ The template main.tex has multiple examples of figures and tables that are eithe
 ## Typeset your article
 
 You can now save your work and typeset your article. Make sure to select `LuaLaTeX+MakeIndex+BibTeX` before typesetting (in TeXworks it is a green arrow).
+
+Please send all of your typesetting files (i.e. main.tex, paper-refs.bib + any figures) along with your .pdf in case any changes need to be made by editors before publication.
