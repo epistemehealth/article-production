@@ -23,11 +23,24 @@ Texture allows you to edit your article metadata and content separately, insert 
 * You must define headings as "Heading 1", "Heading 2" or "Heading 3".
 * Link your in-text references figures, tables or citations using the "Insert" menu, under the "Inline" section.
 
+#### Article Metadata
+
+Texture has a nearly complete set of metadata options in the manuscript details page. Fill in the following:
+
+1. Volume - Neuroanatomy and Behaviour publishes one volume a year, with volume 1 in 2019.
+2. Published Date - Put in today's date in ISO 8601 format (i.e. YYYY-MM-DD). Optional: Put in your submission and acceptance dates in 'Received Date' and 'Accepted Date' respectively.
+3. Copyright Year - Enter the current year
+4. Copyright Holder - Enter author surnames as if it was an in-text citation (e.g. Author; Author and Author; or Author et al.)
+5. Copyright Statement and License (optional) - Select the `CC BY 4.0` option from the 'License' menu and paste the following statement into 'Copyright Statement':
+```
+Except where otherwise noted, the content of this article is licensed under Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
+```
+
 ## Metadata not implemented by Texture
 
 When you save your article, Texture will save it in .dar format. This is just a zip file that contains your article's XML and figures. An easy way to extract your XML for editing is to change the .dar extension to .zip. You can then extract your article's XML.
 
-You'll then need to work through the following additions.
+You'll then need to work through the following additions. Note, when referring to a tag, this guide doesn't assume you are familiar with mark-up languages. In other words, text that is meant to be pasted in after a `<tag>` is meant to go on the line immediately following `<tag>`, not `</tag>`.
 
 ### Journal metadata
 
@@ -97,14 +110,14 @@ You can have multiple corresponding authors. Just assign each one a different id
 
 ### Copyright and Permissions
 
-If you haven't entered your copyright statement in Texture (or need to modify your license tag), you can simply and copy and paste the relevant copyright and permissions tags into the XML here. Look for the tag `<permissions id="permission">`. Immediately after this tag, for a CC-BY-licensed article, you should end up with:
+If you haven't entered your copyright statement (or want it to contain the link) in Texture (or need to modify your license tag), you can simply and copy and paste the relevant copyright and permissions tags into the XML here. Look for the tag `<permissions id="permission">`. Immediately after this tag, for a CC-BY-licensed article, you should end up with:
 ```
         <copyright-year>YYYY</copyright-year>
         <copyright-holder>Author Names</copyright-holder>
         <license>
           <ali:license_ref>http://creativecommons.org/licenses/by/4.0/</ali:license_ref>
         </license>
-        <copyright-statement>Except where otherwise noted, the content of this article is licensed under <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited</copyright-statement>
+        <copyright-statement>Except where otherwise noted, the content of this article is licensed under <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</copyright-statement>
 ```
 Where `YYYY` is replaced with the year of publication and `Author Names` are your surnames (e.g. Author and Author; or Author et al.)
 
