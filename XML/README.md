@@ -153,7 +153,7 @@ You should end up with something like this:
         </element-citation>
       </ref>
       
-      <ref id="journal-article-ref-ddc0ff83231e3b9cd8588b8f2478f8e1">
+      <ref id="journal-article-ref-9868e663c05a07990a7460a90243036b">
       **<label>2</label>**
         <element-citation publication-type="journal">
           <issue>6</issue>
