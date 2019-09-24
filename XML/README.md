@@ -131,7 +131,7 @@ Where #n is the reference number.
 You should end up with something like this:
 ```
       <ref id="journal-article-ref-ddc0ff83231e3b9cd8588b8f2478f8e1">
-      **<label>1</label>**
+      <label>1</label>
         <element-citation publication-type="journal">
           <issue>1</issue>
           <page-range>640-660</page-range>
@@ -154,7 +154,7 @@ You should end up with something like this:
       </ref>
       
       <ref id="journal-article-ref-9868e663c05a07990a7460a90243036b">
-      **<label>2</label>**
+      <label>2</label>
         <element-citation publication-type="journal">
           <issue>6</issue>
           <page-range>640-660</page-range>
