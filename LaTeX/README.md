@@ -78,6 +78,15 @@ Beware special characters such as `%` and `&`. These characters have a special m
 
 The template main.tex has multiple examples of figures and tables that are either a single column or full column wide. Tables can also be set horizontally. Modify these templates to obtain your desired effect, paying attention to the instructions in the comments (anything after a `%` symbol).
 
+The size of a figure can be adjusted by adding a multiplier before `\linewidth`. This is useful when a figure is too big to fit in one column, but doesn't need two whole columns. For example:
+```
+\begin{figure*}[bt!] %% A figure spanning both columns, preferably at the bottom or top of the page
+\centering
+\includegraphics[width=0.65\linewidth]{figureone}
+\caption{A figure that spans 65% of both columns.}\label{fig:one}
+\end{figure*}
+```
+
 ## Typeset your article
 
 You can now save your work and typeset your article. Make sure to select `LuaLaTeX+MakeIndex+BibTeX` before typesetting (in TeXworks it is a green arrow).
