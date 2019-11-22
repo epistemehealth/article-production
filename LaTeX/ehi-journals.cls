@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ehi-journals.cls, v1, 2019/04/30
+% ehi-journals.cls, v1.1, 2019-11-22
 % Based on the oup-contemporary class v1.1 2017/06/28 developed by Overleaf
 % https://www.overleaf.com/latex/templates/template-for-gigascience-journal-manuscript-submissions/shgtrssvbjhs
 % Used by Episteme Health Inc. under a Creative Commons Attribution License (CC BY 4.0)
@@ -9,10 +9,11 @@
 %
 % V1.0 Supported journals:
 % - neurobehav
+% V1.1 Added proofs watermark option
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\ProvidesClass{ehi-journals}[2019/04/30, v1]
+\ProvidesClass{ehi-journals}[2019/11/22, v1.1]
 
 \newif\if@numrefs
 \newif\if@alpharefs
@@ -118,8 +119,14 @@
 	\usepackage{xcolor}
 	\usepackage{graphicx}
 	\usepackage{lipsum}
-	
 	\newwatermark[allpages,color=gray!50,angle=45,scale=3,xpos=0,ypos=0]{\emph{DRAFT}}
+  }{}
+  \ifstrequal{#1}{proof}{%
+	\usepackage[printwatermark]{xwatermark}
+	\usepackage{xcolor}
+	\usepackage{graphicx}
+	\usepackage{lipsum}
+	\newwatermark[allpages,color=gray!50,angle=45,scale=3,xpos=0,ypos=0]{\emph{PROOF}}
   }{}
   \ifstrequal{#1}{retracted}{%
 	\usepackage[printwatermark]{xwatermark}
