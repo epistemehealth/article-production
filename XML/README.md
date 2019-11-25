@@ -18,7 +18,6 @@ Texture allows you to edit your article metadata and content separately, insert 
 
 * Enter your references in the order that they appear in your reference list.
 * You can add references by inputting the DOI into Texture. You can add multiple DOIs at a time to speed things up. However, for each reference, you need to display more fields and enter the reference number manually.
-* For authors, 'Name' refers to 'Surname' or 'Last name'.
 * You need to select a license - usually a CC BY license is the default.
 * You must define headings as "Heading 1", "Heading 2" or "Heading 3".
 * Link your in-text references figures, tables or citations using the "Insert" menu, under the "Inline" section.
@@ -34,7 +33,9 @@ Texture has a nearly complete set of metadata options in the manuscript details 
 4. Copyright Year and Copyright Holder can be left blank and will be automatically populated with the current year and `The Author(s)`.
 5. Corresponding Author Note - Enter the corresponding author's email address. Don't forget to check the corresponding author checkbox for the relevant authors.
 
-#### Affiliations
+#### Authors and Affiliations
+
+Authors can be added and linked to affiliations and funding. Provide each author's name and ORCID URL (e.g. `https://orcid.org/0000-0009-9999-9999`) whenever possible. If the author is a corresponding author, check the corresponding author box and provide their contact details in the Corresponding Author Note in the main article metadata section.
 
 Affiliations should be given with the Department, Institution, City, State/Province and Country. ISNIs can be searched for at [isni.org](https://www.isni.org).
 
