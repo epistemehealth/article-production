@@ -1407,7 +1407,8 @@ FUNCTION {format.doi}
     { "" }
     {
       new.block
-      "doi:{" doi * "}" *
+      "doi: \href{https://doi.org/" doi * "}{" * doi * "}" *
+%      "doi:{" doi * "}" *
     }
   if$
 }
@@ -1660,8 +1661,10 @@ FUNCTION {inbook}
 %  add.blank
   format.pages "pages" output.check
   new.block
+  format.doi output
+  new.block
 %  format.note output
-  output.url  % urlbst
+%  output.url  % urlbst
   fin.entry
 }
 
