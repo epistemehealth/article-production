@@ -8,7 +8,7 @@ Typesetting in JATS XML is facilitated using Texture, a free open source XML edi
 
 Creating the XML version of your article requires 3 steps.
 
-1. Download [Texture](https://github.com/epistemehealth/texture/releases/tag/v3-nab). This version of Texture has been specially modified for typesetting articles in Neuroanatomy and Behaviour.
+1. Download [Texture](https://github.com/epistemehealth/texture/releases/tag/v3.01-nab). This version of Texture has been specially modified for typesetting articles in Neuroanatomy and Behaviour.
 2. Copy and paste your article into Texture.
 3. Complete your article metadata
 
@@ -17,10 +17,11 @@ Creating the XML version of your article requires 3 steps.
 Texture allows you to edit your article metadata and content separately, insert references, figures and tables. Here are some tips:
 
 * Enter your references in the order that they appear in your reference list.
-* You can add references by inputting the DOI into Texture. You can add multiple DOIs at a time to speed things up. However, for each reference, you need to display more fields and enter the reference number manually.
+* You can add references by inputting the DOI into Texture. You can add multiple DOIs at a time to speed things up.
 * You need to select a license - usually a CC BY license is the default.
 * You must define headings as "Heading 1", "Heading 2" or "Heading 3".
 * Link your in-text references figures, tables or citations using the "Insert" menu, under the "Inline" section.
+* If your article is very long and you find that Texture is slowing down (e.g. you have more than 70-100 references), you can typeset parts of the article separately and then knit the XML together.
 
 ### Article Metadata
 

@@ -8,7 +8,7 @@ Most authors will probably write their article in Word or similar software and m
 
 In order to typeset the PDF, it is first necessary to get some of the following:
 1. The reference list in .bib format. This can usually be exported from a citation manager like Endnote or Zotero.
-2. Figures as high quality image files. For line drawings (e.g. graphs), vector formats are ideal because they retain quality when zooming in and out. For example, graphs can be exported from Prism in PDF format or line drawings can be saved in .svg format.
+2. Figures as high quality image files. For line drawings (e.g. graphs), vector formats are ideal because they retain quality when zooming in and out. For example, graphs can be exported from Prism in PDF format or line drawings can be saved in SVG format or EPS formats.
 
 Place these assets in the same directory as the LaTeX files.
 
@@ -66,13 +66,35 @@ The `\cite{}` command will extract the necessary details from your .bib file. Ma
 }
 ```
 
-Most citation managers will allow you to export your article's references as a .bib file. If you did not use a citation manager, you can get help converting your citations to .bib using [text2bib](https://text2bib.economics.utoronto.ca/) (registration required) thanks to Fabian Qifei Bai and Martin J. Osborne at the University of Toronto.
+Most citation managers will allow you to export your article's references as a .bib file. If you did not use a citation manager, you should create a [Zotero](https://www.zotero.org/) library so that your reference list can be checked for retracted or problematic citations. You can also get help converting your citations to .bib using [text2bib](https://text2bib.economics.utoronto.ca/) (registration required) thanks to Fabian Qifei Bai and Martin J. Osborne at the University of Toronto.
 
 Insert the referenceID into the \cite command, e.g. `\cite{referenceID}`. If you need to cite more than one article, separate the IDs by a comma, e.g. `\cite{ref1,ref2,ref3}`. Reference numbering and inclusion in the reference list will then be done automatically.
 
 ### Special characters
 
-Beware special characters such as `%` and `&`. These characters have a special meaning in LaTeX and so can stop your article from typesetting. To use these characters in text, insert a `\` before them, e.g. `\&` to ensure that they are interpreted as text, rather than code. This goes for both main.tex and your paper references .bib file.
+#### Escape characters
+
+Beware special characters such as `%`, `&`, and `~`. These characters have a special meaning in LaTeX and so can stop your article from typesetting. 
+
+As discussed [here](https://tex.stackexchange.com/questions/34580/escape-character-in-latex#34586), the characters `&`, `%`, `$`, `#`, `_`, `{`, `}`, `~`, `^` and `\` need to be escaped or used as commands as follows:
+
+`\&`, `\%`, `\$`, `\#`, `\_`, `\{ \}`, `\textasciitilde`, `\textasciicircum` and `\textbackslash`.
+
+This goes for both main.tex and your paper references .bib file.
+
+#### Math, Superscript, Subscript and Greek
+
+The use of [mathematical symbols](https://en.wikibooks.org/wiki/LaTeX/Mathematics) needs to be specially encoded, including superscripts and subscripts. 
+
+Math and equations need to be enclosed in `$` symbols. However, this does not apply to reporting of statistics (e.g. t(5) = 40.1, p < 0.001).
+
+Superscript or subscript:
+`<sup>superscript</sup>` is encoded `$^{superscript}$`
+`<sub>subscript</sub>` is encoded `$_{subscript}$`
+
+Similarly Greek is encoded `$\alpha$` for a lower case α and `$\Alpha$` for an uppercase Α.
+
+For example: `$\Delta^{9}$` will give `Δ<sup>9</sup>`.
 
 ### Figures and Tables
 
@@ -86,6 +108,7 @@ The size of a figure can be adjusted by adding a multiplier before `\linewidth`.
 \caption{A figure that spans 65% of both columns.}\label{fig:one}
 \end{figure*}
 ```
+The use of tables longer than 1 landscape page is strongly discouraged. If your tables are longer than 1 page, you may be asked to split them up. 
 
 ## Typeset your article
 

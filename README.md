@@ -8,4 +8,4 @@ A LaTeX template is provided based on the oup-contemporary class by Oxford Unive
 
 # Instructions for XML typesetting with Texture
 
-Instructions and resources for XML typesetting using [Texture](https://github.com/substance/texture/releases) are provided. Texture is a free open source XML editor that produces JATS XML. It saves files in a container (.dar) that includes the article formatted according to the Journal Archiving DTD, as well as any necessary files.
+Instructions and resources for XML typesetting using [Texture](https://github.com/epistemehealth/texture/releases) are provided. Texture is a free open source XML editor that produces JATS XML and is currently maintained in the [Libero](https://github.com/libero/texture). Episteme Health has customised Texture to use the Journal Publishing DTD.
