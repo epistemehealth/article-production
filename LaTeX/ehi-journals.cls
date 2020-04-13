@@ -58,6 +58,7 @@
 \RequirePackage{newfloat}
 \RequirePackage{mdframed}
 \RequirePackage{titlesec}
+\RequirePackage[export]{adjustbox}
 
 \RequirePackage{scrextend}
 \changefontsizes[10.5pt]{7.5pt}
@@ -91,12 +92,14 @@
 \def\@jvolume{0}
 \def\@jnumber{0}
 \def\@jarticlenum{e01}
+\def\@crossmarkdate{0}
 
 \newcommand{\jyear}[1]{\def\@jyear{#1}}
 \newcommand{\jvolume}[1]{\def\@jvolume{#1}}
 \newcommand{\jnumber}[1]{\def\@jnumber{#1}}
 \newcommand{\jarticlenum}[1]{\def\@jarticlenum{#1}}
 \newcommand{\jdoi}[1]{\def\@jdoi{#1}}
+\newcommand{\crossmarkdate}[1]{\def\@crossmarkdate{#1}}
 
 \def\@papercat{}
 \def\@runningauthor{}
@@ -199,13 +202,13 @@
     \parbox{\textwidth-21pc+4pc+6.64pt}{%
      \normalfont{\itshape\bfseries\@jname}, \@jyear, \@jvolume(\@jnumber), \@jarticlenum.\par
      \vspace{\dimexpr 8pt-1em\relax}
-    {\color{black!15}\rule{\linewidth}{2pt}}\par%
+    {\color{black!15}\rule{\columnwidth}{2pt}}\par%
     \vspace{\dimexpr 8pt-1em\relax}%
     \fontsize{6.5pt}{9.5pt}\bfseries%
     \textbf{ISSN: 2652-1768}\par
     \textcolor{jcolour}{doi: \href{https://doi.org/\@jdoi}{\color{jcolour}\@jdoi}}\par
     \vspace{\dimexpr 8pt-1em\relax}%
-    {\color{black!15}\rule{\linewidth}{2pt}}\par
+    {\color{black!15}\rule{\columnwidth}{2pt}}\par
   }}%
   \settototalheight{\@gscitedetailsheight}{\usebox{\@gscitedetails}}%
   %%%%
@@ -265,7 +268,9 @@
   \usebox{\@gsheadbox}
   \end{textblock*}%
   %%%
-  \null\vspace*{\dimexpr 13pc+11pt-5pc-6pt\relax}%
+  \null\vspace*{\dimexpr 9pc+11pt-5pc-6pt\relax}%
+  \href{https://crossmark.crossref.org/dialog/?doi=\@jdoi\&domain=pdf\&date\_stamp=\@crossmarkdate}{\includegraphics[scale=0.8,right]{crossmark.eps}}
+  \par
   \raggedright%
   {\fontsize{14pt}{16pt}\selectfont%
     \ifpdf
