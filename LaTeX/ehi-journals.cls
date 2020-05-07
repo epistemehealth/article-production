@@ -59,6 +59,7 @@
 \RequirePackage{mdframed}
 \RequirePackage{titlesec}
 \RequirePackage[export]{adjustbox}
+\RequirePackage{datetime2}
 
 \RequirePackage{scrextend}
 \changefontsizes[10.5pt]{7.5pt}
@@ -88,18 +89,21 @@
 \newcommand{\jlogo}[1]{\def\@jlogo{#1}}
 
 
-\def\@jyear{20xx}
-\def\@jvolume{0}
-\def\@jnumber{0}
-\def\@jarticlenum{e01}
-\def\@crossmarkdate{0}
+\def\setjyear{\the\year}
+\newcounter{volnumber}
+\setcounter{volnumber}{\the\year}
+\addtocounter{volnumber}{-2018}
+\def\setjvolume{\arabic{volnumber}}
+\def\setjnumber{1}
+\def\setjarticlenum{e1}
+\def\setcrossmarkdate{\today}
 
-\newcommand{\jyear}[1]{\def\@jyear{#1}}
-\newcommand{\jvolume}[1]{\def\@jvolume{#1}}
-\newcommand{\jnumber}[1]{\def\@jnumber{#1}}
-\newcommand{\jarticlenum}[1]{\def\@jarticlenum{#1}}
-\newcommand{\jdoi}[1]{\def\@jdoi{#1}}
-\newcommand{\crossmarkdate}[1]{\def\@crossmarkdate{#1}}
+\newcommand{\jyear}[1]{\def\setjyear{#1}}
+\newcommand{\jvolume}[1]{\def\setjvolume{#1}}
+\newcommand{\jnumber}[1]{\def\setjnumber{#1}}
+\newcommand{\jarticlenum}[1]{\def\setjarticlenum{#1}}
+\newcommand{\jdoi}[1]{\def\setdoi{#1}}
+\newcommand{\crossmarkdate}[1]{\def\setcrossmarkdate{#1}}
 
 \def\@papercat{}
 \def\@runningauthor{}
@@ -168,7 +172,7 @@
   \color{jcolour}%
   \textbf{\thepage}%
   \hspace{1em}\raisebox{-0.5pt}{|}\hspace{1em}%
-  \textit{\@jname}, \@jyear
+  \textit{\@jname}, \setjyear
 }
 \fancyhead[RO]{%
   \fontsize{7.8pt}{10pt}\selectfont%
@@ -200,13 +204,13 @@
   \newlength{\@gsheadboxheight}
   \savebox{\@gscitedetails}{%
     \parbox{\textwidth-21pc+4pc+6.64pt}{%
-     \normalfont{\itshape\bfseries\@jname}, \@jyear, \@jvolume(\@jnumber), \@jarticlenum.\par
+     \normalfont{\itshape\bfseries\@jname}, \setjyear, \setjvolume(\setjnumber), \setjarticlenum.\par
      \vspace{\dimexpr 8pt-1em\relax}
     {\color{black!15}\rule{\columnwidth}{2pt}}\par%
     \vspace{\dimexpr 8pt-1em\relax}%
     \fontsize{6.5pt}{9.5pt}\bfseries%
     \textbf{ISSN: 2652-1768}\par
-    \textcolor{jcolour}{doi: \href{https://doi.org/\@jdoi}{\color{jcolour}\@jdoi}}\par
+    \textcolor{jcolour}{doi: \href{https://doi.org/\setdoi}{\color{jcolour}\setdoi}}\par
     \vspace{\dimexpr 8pt-1em\relax}%
     {\color{black!15}\rule{\columnwidth}{2pt}}\par
   }}%
@@ -216,7 +220,7 @@
     \parbox{\textwidth-21pc+4pc+6.64pt}{%
 %    \normalfont%
 %    \fontsize{8pt}{9.5pt}\selectfont%
-%    {\itshape\bfseries\@jname}, \@jyear, \@jarticlenum\par
+%    {\itshape\bfseries\@jname}, \setjyear, \setjarticlenum\par
 %    \vspace{\dimexpr 8pt-1.5pt\relax}%
     \usebox{\@gscitedetails}
     }%
@@ -269,7 +273,7 @@
   \end{textblock*}%
   %%%
   \null\vspace*{\dimexpr 9pc+11pt-5pc-6pt\relax}%
-  \href{https://crossmark.crossref.org/dialog/?doi=\@jdoi\&domain=pdf\&date\_stamp=\@crossmarkdate}{\includegraphics[scale=0.8,right]{crossmark.eps}}
+  \href{https://crossmark.crossref.org/dialog/?doi=\setdoi\&domain=pdf\&date\_stamp=\setcrossmarkdate}{\includegraphics[scale=0.8,right]{crossmark.eps}}
   \par
   \raggedright%
   {\fontsize{14pt}{16pt}\selectfont%

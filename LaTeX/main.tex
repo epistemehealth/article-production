@@ -60,13 +60,16 @@
 \newcommand{\kwdfive}{Keyword Five}
 \newcommand{\kwdsix}{Keyword Six}
 
-%%% Should only be set by an editor
-\jvolume{1}
-\jnumber{1}
+%%% Article metadata automatically set for the current year. Uncomment to set values if required.
+%\jyear{2020}
+%\jnumber{1}
+%\jvolume{2}
+
+%%% Article metadata that needs to be set for each article.
 \jarticlenum{e99}
-\jyear{2020}
-\jdoi{10.35430/nab.YYYY.articleid}
-\crossmarkdate{2020-06-30}
+\crossmarkdate{\today} %% Set to publication date or date of major update of article. Use ISO 8601 date format: YYYY-MM-DD, e.g. 2021-05-30.
+
+\jdoi{10.35430/nab.\setjyear.\setjarticlenum} %% No need to modify, the formula will do it all.
 
 %%% Select your CC License and permissions contact
 \newtoggle{NC}
@@ -356,9 +359,10 @@ This paper has some serious weaknesses. It had some interesting points, which re
 \section{Copyright and License}
 
 \iftoggle{NC}{
-Copyright © \the\year. The Author(s). Except where otherwise noted, the content of this article is licensed under a \href{https://creativecommons.org/licenses/by-nc/4.0/}{Creative Commons Attribution-NonCommercial 4.0 International License}. In addition to this license, reuse of a reasonable portion of the work for \emph{fair dealing} purposes under Australian copyright law, such as medical research, education, scholarship, or not-for-profit or charitable purposes, is also permitted. For additional permissions, please contact the corresponding author.
+Copyright \textcopyright\space\setjyear. The Author(s). Except where otherwise noted, the content of this article is licensed under a \href{https://creativecommons.org/licenses/by-nc/4.0/}{Creative Commons Attribution-NonCommercial 4.0 International License}. In addition to this license, reuse of a reasonable portion of the work for \emph{fair dealing} purposes under Australian copyright law, such as medical research, education, scholarship, or not-for-profit or charitable purposes, is also permitted. For additional permissions, please contact the corresponding author.
 
 	\hypersetup{
+	    pdfmetalang={en},
 	    pdfauthor={\authorlist},
 	    pdfsubject={Neuroscience and Psychology},
 	    pdfkeywords={\kwdone, \kwdtwo, \kwdthree, \kwdfour, \kwdfive, \kwdsix},
@@ -366,14 +370,19 @@ Copyright © \the\year. The Author(s). Except where otherwise noted, the content
 	    pdfpublisher={Episteme Health Inc.},
 	    pdfpubtype={journal},
 	    pdfeissn={2652-1768},
-	    pdfcopyright={Except where otherwise noted, the content of this article is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License. In addition to this license, reuse of a reasonable portion of the work for fair dealing purposes under Australian copyright law, such as medical research, education, scholarship, or not-for-profit or charitable purposes, is also permitted. For additional permissions, please contact the corresponding author.},
+	    pdfdoi={\setdoi},
+	    pdfvolumenum={\setjvolume},
+	    pdfissuenum={\setjnumber},
+	    pdfdate={\setcrossmarkdate},
+	    pdfcopyright={Copyright (C) \the\year.The Author(s).Except where otherwise noted, the content of this article is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License. In addition to this license, reuse of a reasonable portion of the work for fair dealing purposes under Australian copyright law, such as medical research, education, scholarship, or not-for-profit or charitable purposes, is also permitted. For additional permissions, please contact the corresponding author.},
 	    pdflicenseurl={https://creativecommons.org/licenses/by-nc/4.0/},
 	}
 
 }{
-Copyright © \the\year.The Author(s). Except where otherwise noted, the content of this article is licensed under a \href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International License}. You are free to reuse or adapt this article for any purpose, provided appropriate acknowledgement is provided. For additional permissions, please contact the corresponding author.
+Copyright \textcopyright\space\setjyear. The Author(s). Except where otherwise noted, the content of this article is licensed under a \href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International License}. You are free to reuse or adapt this article for any purpose, provided appropriate acknowledgement is provided. For additional permissions, please contact the corresponding author.
 
 	\hypersetup{
+	    pdfmetalang={en},
 	    pdfauthor={\authorlist},
 	    pdfsubject={Neuroscience and Psychology},
 	    pdfkeywords={\kwdone, \kwdtwo, \kwdthree, \kwdfour, \kwdfive, \kwdsix},
@@ -381,7 +390,11 @@ Copyright © \the\year.The Author(s). Except where otherwise noted, the content 
 	    pdfpublisher={Episteme Health Inc.},
 	    pdfpubtype={journal},
 	    pdfeissn={2652-1768},
-	    pdfcopyright={Except where otherwise noted, the content of this article is licensed under Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.},
+	    pdfdoi={\setdoi},
+	    pdfvolumenum={\setjvolume},
+	    pdfissuenum={\setjnumber},
+	    pdfdate={\setcrossmarkdate},
+	    pdfcopyright={Copyright (C) \the\year. The Author(s). Except where otherwise noted, the content of this article is licensed under Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.},
 	    pdflicenseurl={https://creativecommons.org/licenses/by/4.0/},
 	}
 }
