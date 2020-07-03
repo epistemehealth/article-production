@@ -127,6 +127,8 @@
 	\usepackage{graphicx}
 	\usepackage{lipsum}
 	\newwatermark[allpages,color=gray!50,angle=45,scale=3,xpos=0,ypos=0]{\emph{DRAFT}}
+	\usepackage{lineno}
+	\linenumbers
   }{}
   \ifstrequal{#1}{proof}{%
 	\usepackage[printwatermark]{xwatermark}
@@ -134,6 +136,8 @@
 	\usepackage{graphicx}
 	\usepackage{lipsum}
 	\newwatermark[allpages,color=gray!50,angle=45,scale=3,xpos=0,ypos=0]{\emph{PROOF}}
+	\usepackage{lineno}
+	\linenumbers
   }{}
   \ifstrequal{#1}{retracted}{%
 	\usepackage[printwatermark]{xwatermark}
