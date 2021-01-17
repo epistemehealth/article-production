@@ -49,7 +49,7 @@
 \RequirePackage{graphicx}
 \RequirePackage{etoolbox,xpatch}
 \RequirePackage{environ}
-\RequirePackage{lastpage}
+%\RequirePackage{totpage}
 \RequirePackage{rotating}
 \RequirePackage{lscape}
 \RequirePackage{afterpage}
@@ -119,34 +119,35 @@
 \newcommand{\papercat}[1]{\def\@papercat{#1}}
 
 %% WATERMARKS %%
+% 2021-01-07: LaTeX updates broke watermarks.
 
-\newcommand{\watermark}[1]{%
-  \ifstrequal{#1}{draft}{%
-	\usepackage[printwatermark]{xwatermark}
-	\usepackage{xcolor}
-	\usepackage{graphicx}
-	\usepackage{lipsum}
-	\newwatermark[allpages,color=gray!50,angle=45,scale=3,xpos=0,ypos=0]{\emph{DRAFT}}
-	\usepackage{lineno}
-	\linenumbers
-  }{}
-  \ifstrequal{#1}{proof}{%
-	\usepackage[printwatermark]{xwatermark}
-	\usepackage{xcolor}
-	\usepackage{graphicx}
-	\usepackage{lipsum}
-	\newwatermark[allpages,color=gray!50,angle=45,scale=3,xpos=0,ypos=0]{\emph{PROOF}}
-	\usepackage{lineno}
-	\linenumbers
-  }{}
-  \ifstrequal{#1}{retracted}{%
-	\usepackage[printwatermark]{xwatermark}
-	\usepackage{xcolor}
-	\usepackage{graphicx}
-	\usepackage{lipsum}
-	\newwatermark[allpages,color=red!50,angle=45,scale=3,xpos=0,ypos=0]{\emph{RETRACTED}}
-  }
-}
+%\newcommand{\watermark}[1]{%
+%  \ifstrequal{#1}{draft}{%
+%	\usepackage[printwatermark]{xwatermark}
+%	\usepackage{xcolor}
+%	\usepackage{graphicx}
+%	\usepackage{lipsum}
+%	\newwatermark[allpages,color=gray!50,angle=45,scale=3,xpos=0,ypos=0]{\emph{DRAFT}}
+%	\usepackage{lineno}
+%	\linenumbers
+%  }{}
+%  \ifstrequal{#1}{proof}{%
+%	\usepackage[printwatermark]{xwatermark}
+%	\usepackage{xcolor}
+%	\usepackage{graphicx}
+%	\usepackage{lipsum}
+%	\newwatermark[allpages,color=gray!50,angle=45,scale=3,xpos=0,ypos=0]{\emph{PROOF}}
+%	\usepackage{lineno}
+%	\linenumbers
+%  }{}
+%  \ifstrequal{#1}{retracted}{%
+%	\usepackage[printwatermark]{xwatermark}
+%	\usepackage{xcolor}
+%	\usepackage{graphicx}
+%	\usepackage{lipsum}
+%	\newwatermark[allpages,color=red!50,angle=45,scale=3,xpos=0,ypos=0]{\emph{RETRACTED}}
+%  }
+%}
 
 %% WATERMARK END %%
 
@@ -242,7 +243,7 @@
 }
 
 \renewcommand\Authands{ and }
-\renewcommand\AB@affilsepx{ and }
+\renewcommand\AB@affilsepx{\break}
 \renewcommand{\Authfont}{\fontsize{13pt}{18pt}\selectfont}
 \renewcommand{\Affilfont}{\fontsize{9pt}{13pt}\selectfont}
 \setlength{\affilsep}{21pt-9pt}

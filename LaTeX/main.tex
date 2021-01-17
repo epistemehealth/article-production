@@ -15,7 +15,7 @@
 
 %%% Watermark toggles
 %%% Accepts "draft", "proof" or "retracted". Setting any other value will remove the watermark.
-\watermark{draft}
+%\watermark{draft} %%% LaTeX updates broke watermarks
 
 \usepackage{graphicx}
 \usepackage{siunitx}
@@ -23,6 +23,7 @@
 \usepackage{hyperxmp}
 \definecolor{orcidlogocol}{HTML}{A6CE39}
 \newcommand{\orcid}[1]{\href{https://orcid.org/#1}{\textcolor[HTML]{A6CE39}{\aiOrcid}}}
+\newcommand{\ror}[1]{\href{https://ror.org/#1}{\includegraphics[width=0.3cm]{ror}}}
 
 %%% PDF metadata
 %%% This generates the metadata for the PDF
@@ -39,8 +40,8 @@
 \author[1,\authfn{1}]{Corresponding Author}
 \newcommand{\authorlist}{Author One, Author Two, Author Three, Corresponding Author}
 
-\affil[1]{Affiliation 1}
-\affil[2]{Affiliation 2}
+\affil[1]{Affiliation 1\ror{example}}
+\affil[2]{Affiliation 2\ror{example}}
 
 %%% Author Notes
 \authnote{\authfn{1}CorrespondingAuthor@email.com}
