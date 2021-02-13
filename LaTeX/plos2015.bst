@@ -92,6 +92,8 @@ ENTRY
     year
     eprint % urlbst
     doi % urlbst
+    oclc
+    pmid
     url % urlbst
     lastchecked % urlbst
     updated % urlbst
@@ -1413,6 +1415,26 @@ FUNCTION {format.doi}
   if$
 }
 
+FUNCTION {format.oclc}
+{ oclc empty$
+    { "" }
+    {
+      new.block
+      "OCLC: \href{https://worldcat.org/oclc/" oclc * "}{" * oclc * "}" *
+    }
+  if$
+}
+
+FUNCTION {format.pmid}
+{ pmid empty$
+    { "" }
+    {
+      new.block
+      "PMID: \href{https://pubmed.ncbi.nlm.nih.gov/" pmid * "}{" * pmid * "}" *
+    }
+  if$
+}
+
 % Output a URL.  We can't use the more normal idiom (something like
 % `format.url output'), because the `inbrackets' within
 % format.lastchecked applies to everything between calls to `output',
@@ -1582,7 +1604,14 @@ FUNCTION {article}
   add.semicolon
   format.vol.num.pages output
   new.block
-  format.doi output
+  doi empty$
+    { pmid empty$
+        { format.oclc output }
+	{ format.pmid output }
+      if$
+    }
+    { format.doi output }
+  if$
   new.block
 %  format.note output
 %  output.url  % urlbst
@@ -1617,6 +1646,14 @@ FUNCTION {book}
   format.publisher.address output
   format.date "year" output.check
   new.block
+  doi empty$
+    { pmid empty$
+        { format.oclc output }
+	{ format.pmid output }
+      if$
+    }
+    { format.doi output }
+  if$
 %  format.note output
   output.url  % urlbst
   fin.entry
@@ -1661,7 +1698,14 @@ FUNCTION {inbook}
 %  add.blank
   format.pages "pages" output.check
   new.block
-  format.doi output
+  doi empty$
+    { pmid empty$
+        { format.oclc output }
+	{ format.pmid output }
+      if$
+    }
+    { format.doi output }
+  if$
   new.block
 %  format.note output
 %  output.url  % urlbst
