@@ -39,6 +39,10 @@
 %% Folkert van der Beek <folkertvanderbeek at gmail dot com>
 %%
 %%-------------------------------------------------------------------
+%% Modified for Episteme Health Inc by Shaun Khoo 2019-2021
+%% Modifications to this file are available under the same license
+%% terms as the original.
+%%-------------------------------------------------------------------
 %%
 %% This bibliography style file is intended for texts in ENGLISH
 %% This is a numerical citation style, and as such is standard LaTeX.
@@ -277,6 +281,11 @@ FUNCTION {date.block}
 {
   "." *
   no.blank.or.punct
+}
+
+FUNCTION {add.preprint.disclaimer}
+{
+  " [Preprint]" *
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1516,6 +1525,14 @@ FUNCTION {format.archiveurl}
   if$
 }
 
+FUNCTION {format.preprintid}
+{ pages empty$
+    { "" }
+    { " " pages *
+      no.blank.or.punct}
+  if$
+}
+
 % Output a URL.  We can't use the more normal idiom (something like
 % `format.url output'), because the `inbrackets' within
 % format.lastchecked applies to everything between calls to `output',
@@ -1705,6 +1722,52 @@ FUNCTION {article}
   new.block
 %  format.note output
 %  output.url  % urlbst
+  fin.entry
+}
+
+FUNCTION {preprint}
+{ output.bibitem
+  format.authors "author" output.check
+  organization empty$
+    'skip$
+    { author empty$
+        {
+          format.organizations "organization" output.check
+	}
+	{
+	  "; " *
+	  no.blank.or.punct
+          format.organizations "organization" output.check
+	}
+      if$
+    }
+  if$
+  new.block
+  format.title "title" output.check
+  new.block
+  journal
+  remove.dots
+  "journal" bibinfo.check
+  "journal" output.check
+  format.preprintid "pages" output.check
+  add.preprint.disclaimer
+  format.journal.date "year" output.check
+  lastchecked empty$
+    'skip$
+    { format.lastchecked output }
+  if$
+  new.block
+  format.url output
+  doi empty$
+    { pmid empty$
+        { format.oclc output }
+	{ format.pmid output }
+      if$
+    }
+    { format.doi output }
+  if$
+  new.block
+%  format.note output
   fin.entry
 }
 
