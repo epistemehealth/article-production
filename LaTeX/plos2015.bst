@@ -86,6 +86,7 @@ ENTRY
     school
     series
     title
+    translator
     type
     volume
     word
@@ -94,7 +95,9 @@ ENTRY
     doi % urlbst
     oclc
     pmid
+    pmcid
     url % urlbst
+    archiveurl % url for web archive
     lastchecked % urlbst
     updated % urlbst
   }
@@ -1019,6 +1022,79 @@ FUNCTION {format.date}
   if$
 }
 
+FUNCTION {format.year}
+{
+  year empty$
+    { "" }
+    {  no.blank.or.punct
+       "; " year *
+    }
+  if$
+}
+
+
+FUNCTION {format.month}
+{
+  month empty$
+    { "" }
+    { no.blank.or.punct
+      month "01" = month "1" = or
+        { " Jan" }
+        { month "02" = month "2" = or
+          { " Feb" }
+          { month "03" = month "3" = or
+            { " Mar" }
+            { month "04" = month "4" = or
+              { " Apr" }
+              { month "05" = month "5" = or
+                { " May" }
+                { month "06" = month "6" = or
+                  { " Jun" }
+                  { month "07" = month "7" = or
+                    { " Jul" }
+                    { month "08" = month "8" = or
+                      { " Aug" }
+                      { month "09" = month "9" = or
+                        { " Sep" }
+                        { month "10" =
+                          { " Oct" }
+                          { month "11" =
+                            { " Nov" }
+                            { month "12" =
+                              { " Dec" }
+                              { " " month * }
+                            if$ }
+                          if$ }
+                        if$ }
+                      if$ }
+                    if$ }
+                  if$ }
+                if$ }
+              if$ }
+            if$ }
+          if$ }
+       if$ }
+     if$ }
+  if$
+}
+
+FUNCTION {format.day}
+{
+  day empty$
+    { "." }
+    {  no.blank.or.punct
+       " " day *
+    }
+  if$
+}
+
+FUNCTION {format.fulldate}
+{
+  format.year "year" output.check
+  format.month "month" output.check
+  format.day "day" output.check
+}
+
 FUNCTION {format.btitle}
 { title "title" bibinfo.check
   duplicate$ empty$ 'skip$
@@ -1388,12 +1464,7 @@ FUNCTION {make.href}
 FUNCTION {format.url}
 { url empty$
     { "" }
-      { hrefform #1 =
-          { % special case -- add HyperTeX specials
-            urlintro "\url{" url * "}" * url make.href.hypertex * }
-          { urlintro "\url{" * url * "}" * }
-       if$
-     }
+    { "Available from: \href{" url * "}{" * url * "}" * }
   if$
 }
 
@@ -1431,6 +1502,16 @@ FUNCTION {format.pmid}
     {
       new.block
       "PMID: \href{https://pubmed.ncbi.nlm.nih.gov/" pmid * "}{" * pmid * "}" *
+    }
+  if$
+}
+
+FUNCTION {format.archiveurl}
+{ archiveurl empty$
+    { "" }
+    {
+      new.block
+      "Archived: \href{" archiveurl * "}{" * archiveurl * "}" *
     }
   if$
 }
@@ -1483,11 +1564,11 @@ FUNCTION {webpage}
   author empty$
     { editor empty$
         'skip$  % author and editor both optional
-        { format.editors output.nonnull }
+        { format.editors "author and editor" output.check }
       if$
     }
     { editor empty$
-        { format.authors output.nonnull }
+        { format.authors "author" output.check }
         { "can't use both author and editor fields in " cite$ * warning$ }
       if$
     }
@@ -1498,55 +1579,64 @@ FUNCTION {webpage}
 %  if$
   new.block
   format.title "title" output.check
-  journal empty$
-    {
-      format.type "type"
-      publisher empty$
-        'skip$
-        { format.publisher.address output }
-      if$
-      "database on the Internet" 'database :=
-      type database =
-        { format.journal.date "year" output.check }
-        { format.date "year" output.check }
-      if$
-      lastchecked empty$
-        'skip$
-        { format.lastchecked output }
-      if$
-      new.block
-      part empty$
-        'skip$
-        { part output }
-      if$
-      pages empty$
-        'skip$
-        { pages bracket.check output }
-      if$
-    }
-    { journal
-      remove.dots
-      "journal" bibinfo.check
-      "journal" output.check
-      format.type "type"
-      format.journal.date "year" output.check
-      lastchecked empty$
-        'skip$
-        { format.lastchecked output
-	  ";" no.blank.or.punct output
-	}
-      if$
-      no.blank.or.punct format.vol.num output
-      pages empty$
-        'skip$
-	{ ":" no.blank.or.punct output
-	  no.blank.or.punct pages bracket.check output
-	}
-      if$
-      new.block
-    }
+  format.publisher.address output
+  format.date "year" output.check
+%  format.year "year" output.check
+%  format.month "month" output.check
+  lastchecked empty$
+    'skip$
+    { format.lastchecked output }
   if$
+%  journal empty$
+%    {
+%      format.type "type"
+%      publisher empty$
+%        'skip$
+%        { format.publisher.address output }
+%      if$
+%%      "database on the Internet" 'database :=
+%%      type database =
+%%        { format.journal.date "year" output.check }
+%%        { format.date "year" output.check }
+%%      if$
+%      lastchecked empty$
+%        'skip$
+%        { format.lastchecked output }
+%      if$
+%      new.block
+%      part empty$
+%        'skip$
+%        { part output }
+%      if$
+%      pages empty$
+%        'skip$
+%        { pages bracket.check output }
+%      if$
+%    }
+%    { journal
+%      remove.dots
+%      "journal" bibinfo.check
+%      "journal" output.check
+%      format.type "type"
+%      format.journal.date "year" output.check
+%      lastchecked empty$
+%        'skip$
+%        { format.lastchecked output
+%	  ";" no.blank.or.punct output
+%	}
+%      if$
+%      no.blank.or.punct format.vol.num output
+%      pages empty$
+%        'skip$
+%	{ ":" no.blank.or.punct output
+%	  no.blank.or.punct pages bracket.check output
+%	}
+%      if$
+%      new.block
+%    }
+%  if$
   format.url "url" output.check
+  format.archiveurl "archiveurl" output.check
   new.block
   note output
   fin.entry
@@ -1750,11 +1840,20 @@ FUNCTION {inproceedings}
       format.publisher.address output
     }
   if$
-  format.date "year" output.check
+%  format.date "year" output.check
+  format.fulldate
   date.block
 %  add.blank
   format.pages "pages" output.check
-  new.block
+%  new.block
+  doi empty$
+    { pmid empty$
+        { format.oclc output }
+	{ format.pmid output }
+      if$
+    }
+    { format.doi output }
+  if$
 %  format.note output
   output.url  % urlbst
   fin.entry
@@ -1818,7 +1917,8 @@ FUNCTION {proceedings}
       if$
      }
   if$
-      format.date "year" output.check
+%      format.date "year" output.check
+  format.fulldate
   new.block
 %  format.note output
   output.url  % urlbst
